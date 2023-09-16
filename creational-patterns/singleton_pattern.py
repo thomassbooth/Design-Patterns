@@ -7,6 +7,12 @@ class Singleton:
 
     #when creating a new instance of a class, called before __init__
     def __new__(cls, *args, **kwargs):
+        #cannot write this inside __init__ as __new__ is called before __init__
+        if not cls._uniqueInstance:
+            print('I have no instance')
+        else:
+            print('I have an instance')
+
         if cls._uniqueInstance is None:
             #as ive overwritten the __new__ in this class, we call pythons base class object using
             #super() then we have the __new__(cls) to create the class!
@@ -22,8 +28,7 @@ class Singleton_lazy:
         if not Singleton_lazy._uniqueInstance:
             print('i have no instance')
         else:
-            print(' i have an instance')
-
+            print('i have an instance')
 
     #here we access the actual class itself, not the instanciated object properties
     @classmethod
@@ -43,13 +48,13 @@ class test(Singleton):
 
 if __name__ == '__main__':
 
-    s1 = test()
-    s2 = test()
+    s1 = Singleton()
+    s2 = Singleton()
 
     sl1 = Singleton_lazy().newInstance()
     sl2 = Singleton_lazy().newInstance()
 
-
+    
     if id(sl1) == id(sl2):
         print('singleton lazy works')
     else: 
