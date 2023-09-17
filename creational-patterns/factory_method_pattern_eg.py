@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 
 '''Problem Scenario: Online Game Character Creation'''
 
+#interface class
 class Character(ABC):
 
     def __init__(self, hp, attackdmg):
@@ -16,19 +17,19 @@ class Character(ABC):
     def heal(self):
         print(f"{self.__class__.__name__} healed for {self.hp} HP.")
 
-
+#concrete class
 class Warrior(Character):
 
     def attack(self):
         print(self.attackdmg)
 
-
+#concrete class
 class Mage(Character):
 
     def attack(self):
         print(self.attackdmg)
 
-
+#abstract factory
 class CharacterFactory(ABC):
 
     @abstractmethod
@@ -39,7 +40,7 @@ class CharacterFactory(ABC):
     def name_character(self):
         pass
 
-
+#concrete factory
 class WarriorFactory(CharacterFactory):
 
     def create_character(self):
@@ -48,6 +49,7 @@ class WarriorFactory(CharacterFactory):
     def name_character(self, name):
         self.name = name
 
+#concrete factory
 class MageFactory(CharacterFactory):
 
     def create_character(self):

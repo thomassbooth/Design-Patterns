@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+
+#interface class
 class Character(ABC):
 
     def __init__(self, gender, hp, name):
@@ -20,19 +22,19 @@ class Character(ABC):
     def get_battlecry(self):
         pass
 
-
+#concrete class that inherits our interface
 class MaleMage(Character):
 
     def get_battlecry(self):
         print('GRRRRR male')
     
-
+#concrete class that inherits our interface
 class FemaleMage(Character):
 
     def get_battlecry(self):
         print('grrr female')
 
-
+#abstract factory, we use the abstract factory pattern as we have different types of character types
 class CharacterFactory(ABC):
 
     @abstractmethod
@@ -43,7 +45,7 @@ class CharacterFactory(ABC):
     def create_female(self):
         pass
 
-
+#concrete factory
 class MageFactory(CharacterFactory):
 
     def create_male(self, name):
