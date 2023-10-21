@@ -65,3 +65,7 @@ if __name__ == "__main__":
 
     user1.send("Hello, User2!")
     user2.send("Hi, User1!")
+
+    mediator.remove_user(user1)
+
+    user2.send("Are you there, User1?")  # User1 has been removed from the chat.
